@@ -1,39 +1,73 @@
 import { useState } from "react";
 import { darkLogo } from "../../assets";
+import { TwitterTweetEmbed } from 'react-twitter-embed';
+import { MinLogo } from "../../utils/elements";
 
 
-const TweetsContent = () => {
-  const tweets = [1, 2, 3]
-  return <div className="tweets-div">
-    {
-      tweets.map((tweet) => {
-        return <div className="tweet" key={tweet}>
-          <div className="tweet-container flex items-center flex-nowrap gap-[20px]">
-            <div className="img">
-              <img src="/assets/imgs/person.jpg" alt="img" className="rounded-full w-[90px]
-              h-[90px] min-w-[90px] min-h-[90px]" />
-              <img src="/assets/icons/twitter.svg" alt="twitter" className="twitter-svg" />
-            </div>
-            <div className="text flex flex-col items-start">
-              60 Things To Immediately Do About Building
-              <div className="date"> August 23, 2022</div>
-            </div>
-          </div>
-        </div>
-      })
-    }
+function TwitterWidget({ tweetId }) {
+  return (
+    <TwitterTweetEmbed
+      tweetId={tweetId}
+    />
+  );
+}
+
+
+interface Tweets {
+  show: boolean;
+}
+
+
+
+const FacebookTweets = ({ show }: Tweets) => {
+
+  return (
+    <div className={`tweets-div ${!show && 'hidden'}`}>
+      <iframe src="https://widget.taggbox.com/141705" style={{ width: '100%', height: '500px' }}></iframe>
+    </div >
+  )
+
+
+  // follow
+  return (
+    <div>
+      <p>Check out this tweet:</p>
+      <a href="https://twitter.com/GdgPortsaid?ref_src=twsrc%5Etfw"
+        className="twitter-follow-button" data-show-count="false">Follow @GdgPortsaid</a>
+    </div >
+  );
+
+  // show tweets  by id
+  return <div>
+    <TwitterWidget tweetId="1700575112976638269" />
   </div>
+}
 
+
+
+
+
+const TwitterTweets = ({ show }: Tweets) => {
+  return <div className={`tweets-div ${!show && 'hidden'}`}>
+    <a className="twitter-timeline"
+      href="https://twitter.com/GdgPortsaid?ref_src=twsrc%5Etfw">
+      loading...
+    </a>
+  </div>
 }
 
 const Tweets = () => {
-  return <div className="main-sec-tweets max-w-[415px] max-h-[707px] h-fit mt-[40px]">
-    <div className="tweets-container flex flex-col items-center flex-nowrap px-[20px] py-[30px]">
+  const [tweets, setTweets] = useState('twitter')
+  return <div className="main-sec-tweets mt-[40px]">
+    <div className="tweets-container w-[400px] flex flex-col items-center flex-nowrap px-[20px] py-[30px]">
       <div className="buttons flex justify-between w-[100%]">
-        <button className="btn"> Popular</button>
-        <button className="btn active"> Recent</button>
+        <button className={`btn ${tweets === 'facebook' && 'active'}`}
+          onClick={() => setTweets('facebook')}> Facebook</button>
+        <button className={`btn ${tweets === 'twitter' && 'active'}`}
+          onClick={() => setTweets('twitter')}> Twitter</button>
       </div>
-      <TweetsContent />
+      <TwitterTweets show={tweets === 'twitter'} />
+      <FacebookTweets show={tweets === 'facebook'} />
     </div>
   </div>
 }
@@ -63,6 +97,7 @@ export const MainSec = () => {
           We are a community-driven program initiated by Google to bring together developers and technology enthusiasts who are interested in Google's technologies and platforms. GDGs are independent groups run by volunteers and operate in various cities and regions across the world.
         </div>
         <div className="input-email">
+
           <h3>Receiving the latest news:</h3>
           <EmailInput />
         </div>
@@ -71,3 +106,4 @@ export const MainSec = () => {
     </div>
   </div>
 };
+
