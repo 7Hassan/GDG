@@ -41,7 +41,6 @@
               }
 
               button {
-                background-color: $mainBlue;
                 padding: 5px 15px;
                 margin-left: -35px;
               }
@@ -70,6 +69,7 @@
               padding-top: 7px;
               padding-bottom: 7px;
               color: $textColor;
+              background-color: white;
 
               &.active {
                 border: none;
@@ -110,10 +110,10 @@
                 .twitter-svg {
                   width: 30px;
                   position: absolute;
-                  bottom: -6px;
+                  bottom: -9px;
                   left: 50%;
                   transform: translateX(-50%);
-                  padding: 2px;
+                  padding: 5px;
                   border-radius: 50%;
                 }
               }
@@ -131,6 +131,131 @@
                 }
               }
             }
+          }
+        }
+      }
+    }
+
+    .PastEvents-sec {
+      .sec-container {
+        .content {
+          .swiper {
+            overflow-y: unset;
+
+            .swiper-pagination {
+              bottom: unset;
+            }
+
+            .swiper-slide-shadow-left,
+            .swiper-slide-shadow-right {
+              display: none;
+            }
+
+            img {
+              max-width: 700px;
+              max-height: 300px;
+              margin: auto;
+            }
+          }
+        }
+      }
+    }
+
+    .mainTopics-sec {
+      .sec-container {
+        .content {
+          .topics {
+            .topic {
+              .text {
+                font-size: 25px;
+                color: $textColor;
+              }
+            }
+          }
+
+          button {
+            width: 200px;
+          }
+        }
+      }
+    }
+
+    .upcomingSessions-sec {
+      .sec-container {
+        .content {
+          .sessions {
+            .session {
+              max-height: 300px;
+              margin-bottom: 100px;
+              position: relative;
+
+              &::after {
+                content: '';
+                background-color: $textColor;
+                min-width: 250px;
+                width: 50%;
+                height: 1px;
+                position: absolute;
+                bottom: -53px;
+                left: 50%;
+                transform: translateX(-50%);
+              }
+
+              &:first-child {
+                margin-top: 40px !important;
+              }
+
+              &:last-child {
+                margin-bottom: unset;
+
+                &::after {
+                  display: none;
+                }
+              }
+
+              img {
+                max-width: calc(50% - 15px);
+                max-height: 300px;
+              }
+
+              .text {
+                .date {
+                  font-size: 24px;
+                  font-weight: 300;
+                  letter-spacing: 1px;
+
+                  .end {
+                    color: #EA4335;
+                  }
+                }
+
+                .title {
+                  font-size: 30px;
+                  color: $mainBlue;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+  }
+}
+
+.post-sec {
+  .sec-container {
+    .content {
+      .posts {
+        .post {
+          .text {
+            font-size: 25px;
+            color: $textColor;
+          }
+
+          button {
+            width: 200px;
+            font-weight: 300;
           }
         }
       }

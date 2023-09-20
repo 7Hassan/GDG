@@ -1,6 +1,6 @@
 
 import { NavLink } from "react-router-dom";
-
+import { darkLogoCrop } from "../../assets";
 
 const NavBar = () => {
   return <nav>
@@ -28,7 +28,7 @@ export const Header = () => {
   return <header className="container">
     <div className="header-container flex items-center justify-between">
       <div className="logo w-[316px] min-w-[200px] py-[20px]">
-        <img src="/assets/imgs/logo.png" alt="logo" className="w-[100%]" />
+        <img src={darkLogoCrop} alt="logo" className="w-[100%]" />
       </div>
       <NavBar />
     </div>
